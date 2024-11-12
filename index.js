@@ -45,3 +45,7 @@ app.post('/api/numbers', async (req, res) => {
         res.status(500).send(`error inserting new number`);
     }
 });
+
+app.listen(process.env.PORT, () => {
+    console.log(`Server is running on port ${process.env.PORT}`);
+});
