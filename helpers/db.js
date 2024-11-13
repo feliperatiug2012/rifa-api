@@ -1,3 +1,4 @@
+require('pg')
 import { Sequelize } from "sequelize";
 import dotenv from "dotenv";
 
@@ -5,7 +6,6 @@ dotenv.config();
 
 const sequelize = new Sequelize({
   dialect: 'postgres',
-  dialectModule: pg,
   host: process.env.POSTGRES_HOST,
   username: process.env.POSTGRES_USER,
   password: process.env.POSTGRES_PASSWORD,
@@ -19,10 +19,10 @@ const sequelize = new Sequelize({
 });
 
 try {
-  await sequelize.authenticate();
-  console.log('Connection to the database has been established successfully.');
+await sequelize.authenticate();
+console.log('Connection to the database has been established successfully.');
 } catch (error) {
-  console.error('Unable to connect to the database:', error);
+console.error('Unable to connect to the database:', error);
 }
 
 const UserData = sequelize.define('user_data', {
