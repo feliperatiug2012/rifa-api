@@ -1,4 +1,4 @@
-require('pg')
+import pg from "pg";
 import { Sequelize } from "sequelize";
 import dotenv from "dotenv";
 
@@ -6,6 +6,7 @@ dotenv.config();
 
 const sequelize = new Sequelize({
   dialect: 'postgres',
+  dialectModule: pg,
   host: process.env.POSTGRES_HOST,
   username: process.env.POSTGRES_USER,
   password: process.env.POSTGRES_PASSWORD,
